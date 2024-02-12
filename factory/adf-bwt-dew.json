@@ -1,0 +1,9 @@
+{
+	"name": "adf-bwt-dew",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9910dc96-1ca1-4512-a67b-1fb6c0c984df",
+		"tenantId": "16f53ca5-37ca-4b97-af2f-de75ea6046fd"
+	}
+}
