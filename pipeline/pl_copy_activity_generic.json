@@ -82,7 +82,10 @@
 				"inputs": [
 					{
 						"referenceName": "ds_source_data_generic",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"container_nm": "adf-practice"
+						}
 					}
 				]
 			}
