@@ -67,14 +67,16 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@pipeline().parameters.directory_nm",
-								"type": "Expression"
-							},
 							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
 							"type": "BinaryReadSettings"
+						}
+					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
 						}
 					},
 					"enableStaging": false
@@ -84,8 +86,15 @@
 						"referenceName": "ds_source_data_generic",
 						"type": "DatasetReference",
 						"parameters": {
-							"container_nm": "adf-practice"
+							"container_nm": "adf-practice",
+							"directory_nm": "input"
 						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sink",
+						"type": "DatasetReference"
 					}
 				]
 			}
