@@ -28,19 +28,60 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings",
+							"copyBehavior": "PreserveHierarchy"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "ds_source_csv_data",
+						"referenceName": "ds_source_csv_format",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ds_sink_csv_data",
 						"type": "DatasetReference",
 						"parameters": {
-							"directory_nm": "input"
+							"container_nm": {
+								"value": "@pipeline().parameters.sink_conatiner_nm",
+								"type": "Expression"
+							},
+							"directory_nm": {
+								"value": "@pipeline().parameters.sink_directory_nm",
+								"type": "Expression"
+							}
 						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"sink_conatiner_nm": {
+				"type": "string"
+			},
+			"sink_directory_nm": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "basic_activity"
 		},

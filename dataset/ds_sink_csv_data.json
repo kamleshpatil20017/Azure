@@ -1,0 +1,38 @@
+{
+	"name": "ds_sink_csv_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_blob_storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"container_nm": {
+				"type": "String",
+				"defaultValue": "adf-practice"
+			},
+			"directory_nm": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": {
+					"value": "@dataset().directory_nm",
+					"type": "Expression"
+				},
+				"container": {
+					"value": "@dataset().container_nm",
+					"type": "Expression"
+				}
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
