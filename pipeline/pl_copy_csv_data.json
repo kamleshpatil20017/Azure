@@ -1,0 +1,49 @@
+{
+	"name": "pl_copy_csv_data",
+	"properties": {
+		"description": "create pipeline for copy data from csv format",
+		"activities": [
+			{
+				"name": "act_copy_csv_data",
+				"description": "copy csv data path will give generic",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "ds_source_csv_data",
+						"type": "DatasetReference",
+						"parameters": {
+							"directory_nm": "input"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}
