@@ -1,0 +1,80 @@
+{
+	"name": "pl_explore_variable_iteration_condition",
+	"properties": {
+		"activities": [
+			{
+				"name": "act_set_var_session_nm",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "session_nm",
+					"value": "BRAINWORK ADF Session"
+				}
+			},
+			{
+				"name": "act_set_var_session_id",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "session_id",
+					"value": "01"
+				}
+			},
+			{
+				"name": "act_set_var_concat_nm_id",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_set_var_session_nm",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "act_set_var_session_id",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "session_deatails",
+					"value": {
+						"value": "@concat(variables('session_id'),' ',variables('session_nm'))",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"session_nm": {
+				"type": "String"
+			},
+			"session_id": {
+				"type": "String"
+			},
+			"session_deatails": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}
