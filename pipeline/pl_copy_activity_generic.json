@@ -67,6 +67,10 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "@pipeline().parameters.directory_nm",
+								"type": "Expression"
+							},
 							"deleteFilesAfterCompletion": false
 						},
 						"formatSettings": {
@@ -78,14 +82,16 @@
 				"inputs": [
 					{
 						"referenceName": "ds_source_data_generic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container_nm": "adf-practice"
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
 		],
+		"parameters": {
+			"directory_nm": {
+				"type": "String"
+			}
+		},
 		"variables": {
 			"asd": {
 				"type": "String"
