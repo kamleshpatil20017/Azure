@@ -1,7 +1,7 @@
 {
 	"name": "pl_copy_activity",
 	"properties": {
-		"description": "create pipeline for copy data simply \nfrom .txt format to.txt  format\n",
+		"description": "create pipeline for copy data simply \nfrom .txt format to.txt  format.\n",
 		"activities": [
 			{
 				"name": "Copy data1",
@@ -51,6 +51,23 @@
 				]
 			}
 		],
+		"variables": {
+			"new_lst": {
+				"type": "Array"
+			},
+			"marks": {
+				"type": "Array",
+				"defaultValue": [
+					10,
+					2001,
+					22005,
+					200
+				]
+			},
+			"markes ": {
+				"type": "Array"
+			}
+		},
 		"folder": {
 			"name": "basic_activity"
 		},

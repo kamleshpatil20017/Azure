@@ -1,7 +1,7 @@
 {
 	"name": "pl_copy_csv_data",
 	"properties": {
-		"description": "create pipeline for copy data from csv format",
+		"description": "create pipeline for copy data from csv format. explore csv format ",
 		"activities": [
 			{
 				"name": "act_copy_csv_data",

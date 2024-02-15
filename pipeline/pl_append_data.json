@@ -1,0 +1,91 @@
+{
+	"name": "pl_append_data",
+	"properties": {
+		"description": "this pipeline is created to append data in a list and \ntask1: show output by using set variable.\ntask2: access marks[0] index value",
+		"activities": [
+			{
+				"name": "act_append_variable",
+				"type": "AppendVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "marks",
+					"value": {
+						"value": "@int(10)",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "act_append_output",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_append_variable",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "output",
+					"value": {
+						"value": "@variables('marks')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "act_append_output_copy1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_append_output",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "sub1_marks",
+					"value": {
+						"value": "@{variables('marks')[0]}",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"marks": {
+				"type": "Array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
+			},
+			"output": {
+				"type": "Array"
+			},
+			"sub1_marks": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}

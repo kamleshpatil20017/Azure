@@ -1,6 +1,7 @@
 {
-	"name": "pl_explore_variable_iteration_condition",
+	"name": "pl_set_variable",
 	"properties": {
+		"description": "this pipeline is created for set a value inside a variable. perform \ntask1- set value in variable\ntasl2- set new variable with old variable value \ntask3 - combine both values ",
 		"activities": [
 			{
 				"name": "act_set_var_session_nm",
@@ -70,6 +71,21 @@
 			},
 			"session_deatails": {
 				"type": "String"
+			},
+			"new_lst": {
+				"type": "Array"
+			},
+			"marks": {
+				"type": "Array",
+				"defaultValue": [
+					10,
+					2001,
+					22005,
+					200
+				]
+			},
+			"markes ": {
+				"type": "Array"
 			}
 		},
 		"folder": {
