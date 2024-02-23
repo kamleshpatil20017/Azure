@@ -17,6 +17,7 @@
 					"activities": [
 						{
 							"name": "act_if_cond_check_value",
+							"description": "task: I have taken list like [1,2,3,4,5,6]\nso 3 will remove from the list\nand getting remaining all values",
 							"type": "IfCondition",
 							"dependsOn": [],
 							"userProperties": [],
