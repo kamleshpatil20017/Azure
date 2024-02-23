@@ -1,0 +1,95 @@
+{
+	"name": "pl_if_statement",
+	"properties": {
+		"description": "task: i have list [1,2,3,4,5,6]\nif list in 3 then true\nelse false ",
+		"activities": [
+			{
+				"name": "act_foreach_skip_exicution",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.lst",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(item(),3)",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Append variable1",
+										"type": "AppendVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "new_list",
+											"value": "@item()"
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_foreach_skip_exicution",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "store_output",
+					"value": {
+						"value": "@variables('new_list')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"lst": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6
+				]
+			}
+		},
+		"variables": {
+			"new_list": {
+				"type": "Array"
+			},
+			"store_output": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}

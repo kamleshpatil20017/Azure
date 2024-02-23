@@ -1,0 +1,104 @@
+{
+	"name": "pl_iteration",
+	"properties": {
+		"description": "in this pipeline iterate list of values\n",
+		"activities": [
+			{
+				"name": "act_foreach_test",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.lst",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "act_if_cond_check_value",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@equals(item(),3)",
+									"type": "Expression"
+								},
+								"ifFalseActivities": [
+									{
+										"name": "act_append_var_list",
+										"type": "AppendVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "new_list",
+											"value": {
+												"value": "@item()",
+												"type": "Expression"
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "act_set_array",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "act_foreach_test",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "store_output_in_variable",
+					"value": {
+						"value": "@variables('new_list')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"lst": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5
+				]
+			}
+		},
+		"variables": {
+			"new_list": {
+				"type": "Array"
+			},
+			"output_array_store_in_variable": {
+				"type": "String"
+			},
+			"store_output_in_variable": {
+				"type": "Array"
+			},
+			"store_output": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}

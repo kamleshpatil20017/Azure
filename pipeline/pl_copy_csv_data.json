@@ -19,6 +19,11 @@
 				"typeProperties": {
 					"source": {
 						"type": "DelimitedTextSource",
+						"additionalColumns": [
+							{
+								"value": ""
+							}
+						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
@@ -80,6 +85,14 @@
 			},
 			"sink_directory_nm": {
 				"type": "string"
+			}
+		},
+		"variables": {
+			"new_list": {
+				"type": "Array"
+			},
+			"store_output": {
+				"type": "Array"
 			}
 		},
 		"folder": {
