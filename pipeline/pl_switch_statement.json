@@ -5,6 +5,7 @@
 		"activities": [
 			{
 				"name": "act_switch_copy_data",
+				"description": "task: I want to copy data on the given destination if none then default will execute\nI want to copy data from the source file to the target (like output1, output2, output3)",
 				"type": "Switch",
 				"dependsOn": [],
 				"userProperties": [],

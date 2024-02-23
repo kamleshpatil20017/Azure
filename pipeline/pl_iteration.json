@@ -4,7 +4,7 @@
 		"description": "in this pipeline iterate list of values\n",
 		"activities": [
 			{
-				"name": "act_foreach_test",
+				"name": "act_foreach_test_if_statement",
 				"type": "ForEach",
 				"dependsOn": [],
 				"userProperties": [],
@@ -50,7 +50,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "act_foreach_test",
+						"activity": "act_foreach_test_if_statement",
 						"dependencyConditions": [
 							"Succeeded"
 						]
