@@ -1,5 +1,5 @@
 {
-	"name": "pl_iteration",
+	"name": "pl_iteration_foreach",
 	"properties": {
 		"description": "in this pipeline iterate list of values\n",
 		"activities": [
@@ -94,6 +94,21 @@
 				"type": "Array"
 			},
 			"store_output": {
+				"type": "Array"
+			},
+			"my_ variable": {
+				"type": "String"
+			},
+			"variable": {
+				"type": "String"
+			},
+			"vaariable1": {
+				"type": "Array"
+			},
+			"filter_data": {
+				"type": "String"
+			},
+			"store_append_data": {
 				"type": "Array"
 			}
 		},
