@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Web1",
+				"description": "task fetch data from url and apply filter age is greater than 60 and show the output ",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -21,6 +22,7 @@
 			},
 			{
 				"name": "Filter1",
+				"description": "her i will applied filter",
 				"type": "Filter",
 				"dependsOn": [
 					{
@@ -43,40 +45,12 @@
 				}
 			},
 			{
-				"name": "Filter2",
-				"type": "Filter",
-				"dependsOn": [
-					{
-						"activity": "Web1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"items": {
-						"value": "@activity('Web1').output",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@less(item().employee_age,20)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "Append variable1",
+				"description": "u can observe its a empty for that reason here i added new set variable for output",
 				"type": "AppendVariable",
 				"dependsOn": [
 					{
 						"activity": "Filter1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					},
-					{
-						"activity": "Filter2",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -87,6 +61,30 @@
 					"variableName": "store_append_data",
 					"value": {
 						"value": "@activity('Filter1').output",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "oup1",
+					"value": {
+						"value": "@variables('store_append_data')",
 						"type": "Expression"
 					}
 				}
@@ -106,6 +104,15 @@
 				"type": "String"
 			},
 			"store_append_data": {
+				"type": "Array"
+			},
+			"op": {
+				"type": "Array"
+			},
+			"op1": {
+				"type": "String"
+			},
+			"oup1": {
 				"type": "Array"
 			}
 		},
