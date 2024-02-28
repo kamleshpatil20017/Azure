@@ -61,13 +61,7 @@
 							"inputs": [
 								{
 									"referenceName": "ds_emp_blob",
-									"type": "DatasetReference",
-									"parameters": {
-										"file_name": {
-											"value": "@pipeline().parameters.InputFile",
-											"type": "Expression"
-										}
-									}
+									"type": "DatasetReference"
 								}
 							],
 							"outputs": [

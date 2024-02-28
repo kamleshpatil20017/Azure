@@ -1,0 +1,71 @@
+{
+	"name": "pipeline2",
+	"properties": {
+		"activities": [
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('department')",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@contains(item(),'HR')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Filter2",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "Filter1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.numbers",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@greater(item(),2)",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"numbers": {
+				"type": "array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6
+				]
+			}
+		},
+		"variables": {
+			"department": {
+				"type": "Array",
+				"defaultValue": [
+					"IT",
+					"HR",
+					"Sales",
+					"consulting"
+				]
+			}
+		},
+		"annotations": []
+	}
+}
