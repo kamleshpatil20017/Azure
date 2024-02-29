@@ -18,7 +18,6 @@
 							"name": "If Condition1",
 							"type": "IfCondition",
 							"dependsOn": [],
-							"userProperties": [],
 							"typeProperties": {
 								"expression": {
 									"value": "@equals(item(),3)",
@@ -32,7 +31,10 @@
 										"userProperties": [],
 										"typeProperties": {
 											"variableName": "new_list",
-											"value": "@item()"
+											"value": {
+												"value": "@item()",
+												"type": "Expression"
+											}
 										}
 									}
 								]
