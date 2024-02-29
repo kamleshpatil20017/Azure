@@ -10,9 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "customer.csv.xlsx",
-				"folderPath": "data",
-				"container": "sourcefiles"
+				"fileName": "GARAGE_CUSTOMER.csv",
+				"container": "adf-practice"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

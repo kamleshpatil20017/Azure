@@ -52,15 +52,56 @@
 						"referenceName": "ds_sink_data_generic",
 						"type": "DatasetReference",
 						"parameters": {
-							"container_nm": "adf-practice"
+							"container_nm": "output"
 						}
 					}
 				]
+			},
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [
+					{
+						"activity": "act_copy_data1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "ds_source_data_generic",
+						"type": "DatasetReference",
+						"parameters": {
+							"container_nm": "adf-practice",
+							"directory_nm": "input"
+						}
+					},
+					"fieldList": [
+						"exists"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				}
 			}
 		],
 		"parameters": {
 			"directory_nm": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "input"
 			},
 			"container_nm": {
 				"type": "string",

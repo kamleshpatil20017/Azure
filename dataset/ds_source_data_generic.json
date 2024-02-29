@@ -19,6 +19,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": "A.txt",
 				"folderPath": {
 					"value": "@dataset().directory_nm",
 					"type": "Expression"
