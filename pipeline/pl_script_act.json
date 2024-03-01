@@ -1,0 +1,37 @@
+{
+	"name": "pl_script_act",
+	"properties": {
+		"activities": [
+			{
+				"name": "Script1",
+				"type": "Script",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"typeProperties": {
+					"scripts": [
+						{
+							"type": "Query",
+							"text": "-- Inserting data\nINSERT INTO Employee (EmployeeID, FirstName, LastName, Department, Position, Salary)\nVALUES\n(1, 'John', 'Doe', 'IT', 'Software Engineer', 75000.00),\n(2, 'Jane', 'Smith', 'HR', 'HR Specialist', 60000.00),\n(3, 'Bob', 'Johnson', 'Finance', 'Accountant', 80000.00);\n\n-- Querying data\nSELECT * FROM Employee;"
+						}
+					],
+					"scriptBlockExecutionTimeout": "02:00:00"
+				}
+			}
+		],
+		"folder": {
+			"name": "basic_activity"
+		},
+		"annotations": []
+	}
+}
