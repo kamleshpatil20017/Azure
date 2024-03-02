@@ -29,6 +29,51 @@
 					"dataset": {
 						"referenceName": "ds_emp_blob",
 						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Lookup1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "store_output",
+					"value": {
+						"value": "@activity('Lookup1').output",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "loockup_act_op",
+					"value": {
+						"value": "@variables('store_output')",
+						"type": "Expression"
 					}
 				}
 			}
@@ -47,6 +92,12 @@
 				"type": "String"
 			},
 			"store_append_data": {
+				"type": "Array"
+			},
+			"store_output": {
+				"type": "Array"
+			},
+			"loockup_act_op": {
 				"type": "Array"
 			}
 		},
