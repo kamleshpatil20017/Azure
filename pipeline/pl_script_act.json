@@ -29,6 +29,14 @@
 				}
 			}
 		],
+		"variables": {
+			"store_output": {
+				"type": "Array"
+			},
+			"loockup_act_op": {
+				"type": "Array"
+			}
+		},
 		"folder": {
 			"name": "basic_activity"
 		},
