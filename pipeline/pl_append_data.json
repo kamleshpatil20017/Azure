@@ -4,36 +4,48 @@
 		"description": "this pipeline is created to append data in a list and \ntask1: show output by using set variable.\ntask2: access marks[0] index value",
 		"activities": [
 			{
-				"name": "act_append_variable",
-				"type": "AppendVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "marks",
-					"value": {
-						"value": "@int(10)",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "act_append_output",
+				"name": "Set variable1",
 				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "act_append_variable",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "output",
+					"variableName": "marks",
+					"value": [
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8
+					]
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Set variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set variable1_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "append_marks",
 					"value": {
 						"value": "@variables('marks')",
 						"type": "Expression"
@@ -41,46 +53,29 @@
 				}
 			},
 			{
-				"name": "act_append_output_copy1",
+				"name": "Set variable1_copy1",
 				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "act_append_output",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "sub1_marks",
-					"value": {
-						"value": "@{variables('marks')[0]}",
-						"type": "Expression"
-					}
+					"variableName": "Add_new_marks",
+					"value": "10"
 				}
 			}
 		],
 		"variables": {
 			"marks": {
-				"type": "Array",
-				"defaultValue": [
-					1,
-					2,
-					3,
-					4,
-					5
-				]
-			},
-			"output": {
 				"type": "Array"
 			},
-			"sub1_marks": {
+			"Add_new_marks": {
 				"type": "String"
+			},
+			"append_marks": {
+				"type": "Array"
 			}
 		},
 		"folder": {

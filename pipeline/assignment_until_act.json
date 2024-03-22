@@ -10,7 +10,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"expression": {
-						"value": "@equals(length(variables('range')),0)",
+						"value": "@empty(variables('range'))",
 						"type": "Expression"
 					},
 					"activities": [
@@ -80,6 +80,15 @@
 				"type": "Array"
 			},
 			"output": {
+				"type": "Array"
+			},
+			"marks": {
+				"type": "Array"
+			},
+			"Add_new_marks": {
+				"type": "String"
+			},
+			"append_marks": {
 				"type": "Array"
 			}
 		},

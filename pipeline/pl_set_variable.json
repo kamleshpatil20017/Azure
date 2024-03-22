@@ -76,13 +76,7 @@
 				"type": "Array"
 			},
 			"marks": {
-				"type": "Array",
-				"defaultValue": [
-					10,
-					2001,
-					22005,
-					200
-				]
+				"type": "Array"
 			},
 			"markes ": {
 				"type": "Array"
@@ -103,6 +97,12 @@
 				"type": "String"
 			},
 			"new_range": {
+				"type": "Array"
+			},
+			"Add_new_marks": {
+				"type": "String"
+			},
+			"append_marks": {
 				"type": "Array"
 			}
 		},
