@@ -86,6 +86,24 @@
 			},
 			"markes ": {
 				"type": "Array"
+			},
+			"range": {
+				"type": "Array"
+			},
+			"range1": {
+				"type": "String"
+			},
+			"output": {
+				"type": "Array"
+			},
+			"range_2": {
+				"type": "Array"
+			},
+			"range_new": {
+				"type": "String"
+			},
+			"new_range": {
+				"type": "Array"
 			}
 		},
 		"folder": {

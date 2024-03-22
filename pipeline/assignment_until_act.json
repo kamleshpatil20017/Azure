@@ -1,0 +1,91 @@
+{
+	"name": "assignment_until_act",
+	"properties": {
+		"description": "- until - set array variable == 10 - contains \n- set array variable - remove one element \n\t\t[2,3,4,5,6,7,8,9,10]\n\t\t[3,4,5,6,7,8,9,10]\n\t\t[4,5,6,7,8,9,10]\n\t\t.\n\t\t.\n\t\t.\n\t\t.[10]\n\t\t.[]",
+		"activities": [
+			{
+				"name": "Until1",
+				"type": "Until",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@equals(length(variables('range')),0)",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Set variable2",
+							"type": "SetVariable",
+							"dependsOn": [],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "new_range",
+								"value": {
+									"value": "@skip(variables('range'),1)",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable3",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set variable2",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "range",
+								"value": {
+									"value": "@variables('new_range')",
+									"type": "Expression"
+								}
+							}
+						}
+					],
+					"timeout": "0.12:00:00"
+				}
+			}
+		],
+		"variables": {
+			"range": {
+				"type": "Array",
+				"defaultValue": [
+					1,
+					2,
+					3,
+					4,
+					5,
+					6,
+					7,
+					8,
+					9,
+					10
+				]
+			},
+			"new_range": {
+				"type": "Array"
+			},
+			"output": {
+				"type": "Array"
+			}
+		},
+		"folder": {
+			"name": "Assignments"
+		},
+		"annotations": []
+	}
+}
