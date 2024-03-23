@@ -16,15 +16,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "ds_emp_blob",
-						"type": "DatasetReference"
-					},
 					"fieldList": [
 						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -103,31 +100,8 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "ds_emp_blob",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "ds_output_container",
-									"type": "DatasetReference",
-									"parameters": {
-										"container_name_in_dataset": "output1"
-									}
-								}
-							]
+								"enableStaging": false
+							}
 						}
 					]
 				}

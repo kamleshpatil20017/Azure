@@ -36,19 +36,7 @@
 						}
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "ds_source",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ds_sink",
-						"type": "DatasetReference"
-					}
-				]
+				}
 			}
 		],
 		"variables": {

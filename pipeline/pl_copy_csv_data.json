@@ -26,6 +26,7 @@
 						],
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -44,38 +45,8 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
-				},
-				"inputs": [
-					{
-						"referenceName": "ds_source_csv_format",
-						"type": "DatasetReference"
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ds_sink_csv_data",
-						"type": "DatasetReference",
-						"parameters": {
-							"container_nm": {
-								"value": "@pipeline().parameters.sink_conatiner_nm",
-								"type": "Expression"
-							},
-							"directory_nm": {
-								"value": "@pipeline().parameters.sink_directory_nm",
-								"type": "Expression"
-							}
-						}
-					}
-				]
+					"enableStaging": false
+				}
 			}
 		],
 		"parameters": {

@@ -36,26 +36,7 @@
 						}
 					},
 					"enableStaging": false
-				},
-				"inputs": [
-					{
-						"referenceName": "ds_source_data_generic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container_nm": "adf-practice",
-							"directory_nm": "input"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ds_sink_data_generic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container_nm": "output"
-						}
-					}
-				]
+				}
 			},
 			{
 				"name": "Get Metadata1",
@@ -77,19 +58,12 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "ds_source_data_generic",
-						"type": "DatasetReference",
-						"parameters": {
-							"container_nm": "adf-practice",
-							"directory_nm": "input"
-						}
-					},
 					"fieldList": [
 						"exists"
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {

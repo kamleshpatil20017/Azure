@@ -48,35 +48,8 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "ds_emp_blob",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "paste_data_emp",
-									"type": "DatasetReference",
-									"parameters": {
-										"folder_name": {
-											"value": "@pipeline().parameters.Outoput",
-											"type": "Expression"
-										},
-										"container_name": "output3"
-									}
-								}
-							]
+								"enableStaging": false
+							}
 						}
 					],
 					"timeout": "0.00:01:00"

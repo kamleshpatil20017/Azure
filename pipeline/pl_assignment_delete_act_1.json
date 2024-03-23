@@ -1,0 +1,37 @@
+{
+	"name": "pl_assignment_delete_act_1",
+	"properties": {
+		"description": "1. we are having directory as below \n\t- <container_name>\n\t\t- movies\n\t\t\t- hollywood \n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t- bollywood\n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t\tmarathi.txt\n\n\n\t1. delete file marathi.txt present under movies->bollywood",
+		"activities": [
+			{
+				"name": "Delete1",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "blob_storage",
+						"type": "DatasetReference"
+					},
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "Assignments"
+		},
+		"annotations": []
+	}
+}

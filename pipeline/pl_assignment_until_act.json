@@ -1,5 +1,5 @@
 {
-	"name": "assignment_until_act",
+	"name": "pl_assignment_until_act",
 	"properties": {
 		"description": "- until - set array variable == 10 - contains \n- set array variable - remove one element \n\t\t[2,3,4,5,6,7,8,9,10]\n\t\t[3,4,5,6,7,8,9,10]\n\t\t[4,5,6,7,8,9,10]\n\t\t.\n\t\t.\n\t\t.\n\t\t.[10]\n\t\t.[]",
 		"activities": [

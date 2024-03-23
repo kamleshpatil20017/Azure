@@ -26,10 +26,6 @@
 							"type": "DelimitedTextReadSettings"
 						}
 					},
-					"dataset": {
-						"referenceName": "ds_emp_blob",
-						"type": "DatasetReference"
-					},
 					"firstRowOnly": false
 				}
 			},

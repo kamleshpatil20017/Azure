@@ -53,34 +53,8 @@
 												"fileExtension": ".txt"
 											}
 										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "ds_emp_blob",
-											"type": "DatasetReference"
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "ds_output_container",
-											"type": "DatasetReference",
-											"parameters": {
-												"container_name_in_dataset": {
-													"value": "@pipeline().parameters.container_name",
-													"type": "Expression"
-												}
-											}
-										}
-									]
+										"enableStaging": false
+									}
 								}
 							]
 						},
@@ -122,34 +96,8 @@
 												"fileExtension": ".txt"
 											}
 										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "ds_emp_blob",
-											"type": "DatasetReference"
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "ds_output_container",
-											"type": "DatasetReference",
-											"parameters": {
-												"container_name_in_dataset": {
-													"value": "@pipeline().parameters.container_name",
-													"type": "Expression"
-												}
-											}
-										}
-									]
+										"enableStaging": false
+									}
 								}
 							]
 						},
@@ -191,34 +139,8 @@
 												"fileExtension": ".txt"
 											}
 										},
-										"enableStaging": false,
-										"translator": {
-											"type": "TabularTranslator",
-											"typeConversion": true,
-											"typeConversionSettings": {
-												"allowDataTruncation": true,
-												"treatBooleanAsNumber": false
-											}
-										}
-									},
-									"inputs": [
-										{
-											"referenceName": "ds_emp_blob",
-											"type": "DatasetReference"
-										}
-									],
-									"outputs": [
-										{
-											"referenceName": "ds_output_container",
-											"type": "DatasetReference",
-											"parameters": {
-												"container_name_in_dataset": {
-													"value": "@pipeline().parameters.container_name",
-													"type": "Expression"
-												}
-											}
-										}
-									]
+										"enableStaging": false
+									}
 								}
 							]
 						}

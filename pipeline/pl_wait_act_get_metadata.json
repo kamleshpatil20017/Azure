@@ -15,10 +15,6 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"dataset": {
-						"referenceName": "get_metadata_file",
-						"type": "DatasetReference"
-					},
 					"fieldList": [],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
@@ -84,28 +80,8 @@
 										"fileExtension": ".txt"
 									}
 								},
-								"enableStaging": false,
-								"translator": {
-									"type": "TabularTranslator",
-									"typeConversion": true,
-									"typeConversionSettings": {
-										"allowDataTruncation": true,
-										"treatBooleanAsNumber": false
-									}
-								}
-							},
-							"inputs": [
-								{
-									"referenceName": "get_metadata_file",
-									"type": "DatasetReference"
-								}
-							],
-							"outputs": [
-								{
-									"referenceName": "output1_sink",
-									"type": "DatasetReference"
-								}
-							]
+								"enableStaging": false
+							}
 						}
 					]
 				}
