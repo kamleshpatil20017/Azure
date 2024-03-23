@@ -1,5 +1,5 @@
 {
-	"name": "blob_storage",
+	"name": "blob_storage_ass_del_act_1",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage1",

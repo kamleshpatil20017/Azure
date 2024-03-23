@@ -4,7 +4,7 @@
 		"description": "1. we are having directory as below \n\t- <container_name>\n\t\t- movies\n\t\t\t- hollywood \n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t- bollywood\n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t\tmarathi.txt\n\n\n\t1. delete file marathi.txt present under movies->bollywood",
 		"activities": [
 			{
-				"name": "Delete1",
+				"name": "Delete_act_on_specific_file",
 				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
@@ -17,10 +17,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "blob_storage",
+						"referenceName": "blob_storage_ass_del_act_1",
 						"type": "DatasetReference"
 					},
-					"enableLogging": true,
+					"enableLogging": false,
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"recursive": true,

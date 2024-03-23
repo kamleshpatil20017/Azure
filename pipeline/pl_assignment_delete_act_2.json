@@ -1,0 +1,52 @@
+{
+	"name": "pl_assignment_delete_act_2",
+	"properties": {
+		"description": "1. we are having directory as below \n\t- <container_name>\n\t\t- movies\n\t\t\t- hollywood \n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t- bollywood\n\t\t\t\tenglish.txt\n\t\t\t\thindi.txt\n\t\t\t\tmarathi.txt\n2. take input parameter from user for file name and delete that file from hollywood folder \n",
+		"activities": [
+			{
+				"name": "Delete_act_dynamic_file_name",
+				"type": "Delete",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "blob_storage_Ass_del_act_2",
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": {
+								"value": "@pipeline().parameters.file_name",
+								"type": "Expression"
+							}
+						}
+					},
+					"enableLogging": false,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"wildcardFileName": {
+							"value": "@pipeline().parameters.file_name",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					}
+				}
+			}
+		],
+		"parameters": {
+			"file_name": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Assignments"
+		},
+		"annotations": []
+	}
+}
