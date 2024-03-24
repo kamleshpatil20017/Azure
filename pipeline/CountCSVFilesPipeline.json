@@ -1,0 +1,107 @@
+{
+	"name": "CountCSVFilesPipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "GetCSVFileMetadata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"fieldList": []
+				},
+				"linkedServiceName": {
+					"referenceName": "<YourLinkedServiceName>",
+					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "FilterCSVFiles",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "GetCSVFileMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetCSVFileMetadata').output.childItems",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "FilterFiles",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@endsWith(item().name, '.csv')",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "IncrementCount",
+										"type": "AppendVariable",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"variableName": "fileCount",
+											"value": 1
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "OutputCount",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "FilterCSVFiles",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "TotalCSVFiles",
+					"value": {
+						"value": "@variables('fileCount')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"count": {
+				"type": "Integer"
+			},
+			"count_files": {
+				"type": "String"
+			},
+			"count_csv_files": {
+				"type": "Integer"
+			}
+		},
+		"annotations": []
+	}
+}

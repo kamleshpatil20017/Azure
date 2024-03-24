@@ -93,6 +93,41 @@
 				"defaultValue": "output1"
 			}
 		},
+		"variables": {
+			"file_name_with_extension": {
+				"type": "Array"
+			},
+			"file_name_concat": {
+				"type": "String"
+			},
+			"combine_file_names": {
+				"type": "Array"
+			},
+			"collect_file_name_1": {
+				"type": "Array"
+			},
+			"collect_file_name_2": {
+				"type": "Array"
+			},
+			"combine_result": {
+				"type": "Array"
+			},
+			"combine_op": {
+				"type": "String"
+			},
+			"count_of_file_name": {
+				"type": "Integer"
+			},
+			"count": {
+				"type": "Integer"
+			},
+			"count_files": {
+				"type": "String"
+			},
+			"count_csv_files": {
+				"type": "Integer"
+			}
+		},
 		"folder": {
 			"name": "basic_activity"
 		},

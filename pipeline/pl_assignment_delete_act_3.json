@@ -1,11 +1,11 @@
 {
-	"name": "pipeline_child",
+	"name": "pl_assignment_delete_act_3",
 	"properties": {
+		"description": "1. we are having directory as below \n\t- <container_name>\n\t\t- movies\n\t\t\t- hollywood \n`",
 		"activities": [
 			{
-				"name": "Lookup1",
-				"description": "fetch a data from file",
-				"type": "Lookup",
+				"name": "Delete1",
+				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -16,25 +16,28 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
 					"dataset": {
-						"referenceName": "blob_storage_ass_del_act_1",
+						"referenceName": "blob_storage_Ass_del_act_2",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
+						"wildcardFileName": {
+							"value": "@concat(pipeline().parameters.file_name,'.csv')",
+							"type": "Expression"
+						},
+						"enablePartitionDiscovery": false
+					}
 				}
 			}
 		],
+		"parameters": {
+			"file_name": {
+				"type": "String"
+			}
+		},
 		"variables": {
 			"file_name_with_extension": {
 				"type": "Array"
@@ -69,6 +72,9 @@
 			"count_csv_files": {
 				"type": "Integer"
 			}
+		},
+		"folder": {
+			"name": "Assignments"
 		},
 		"annotations": []
 	}

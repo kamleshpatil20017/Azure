@@ -140,11 +140,40 @@
 				}
 			},
 			{
-				"name": "Set variable1",
+				"name": "count_of_bollywood_files",
 				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Filter_filenaeme_bollywood",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "count",
+					"value": {
+						"value": "@activity('Filter_filenaeme_bollywood').output.FilteredItemsCount",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "count_of_hollywood_files",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Filter_filename_hollywood",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"secureOutput": false,
 					"secureInput": false
@@ -152,21 +181,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "count_of_file_name",
-					"value": ""
+					"value": {
+						"value": "@activity('Filter_filename_hollywood').output.FilteredItemsCount",
+						"type": "Expression"
+					}
 				}
 			},
 			{
-				"name": "Filter1",
-				"type": "Filter",
-				"dependsOn": [],
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "count_of_bollywood_files",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
 				"userProperties": [],
 				"typeProperties": {
-					"items": {
-						"value": "@variables('combine_op')",
-						"type": "Expression"
-					},
-					"condition": {
-						"value": "@item().FilteredItemsCount",
+					"variableName": "count_csv_files",
+					"value": {
+						"value": "@variables('count').value",
 						"type": "Expression"
 					}
 				}
@@ -195,6 +235,15 @@
 				"type": "String"
 			},
 			"count_of_file_name": {
+				"type": "Integer"
+			},
+			"count": {
+				"type": "Integer"
+			},
+			"count_files": {
+				"type": "String"
+			},
+			"count_csv_files": {
 				"type": "Integer"
 			}
 		},

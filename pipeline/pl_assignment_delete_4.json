@@ -1,11 +1,11 @@
 {
-	"name": "pipeline_child",
+	"name": "pl_assignment_delete_4",
 	"properties": {
+		"description": "4. delete all the files and folders from movies folder",
 		"activities": [
 			{
-				"name": "Lookup1",
-				"description": "fetch a data from file",
-				"type": "Lookup",
+				"name": "Delete1",
+				"type": "Delete",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -16,22 +16,15 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
-					},
 					"dataset": {
-						"referenceName": "blob_storage_ass_del_act_1",
+						"referenceName": "blob_storage_Ass_del_act_2",
 						"type": "DatasetReference"
 					},
-					"firstRowOnly": false
+					"enableLogging": true,
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					}
 				}
 			}
 		],
@@ -69,6 +62,9 @@
 			"count_csv_files": {
 				"type": "Integer"
 			}
+		},
+		"folder": {
+			"name": "Assignments"
 		},
 		"annotations": []
 	}
