@@ -15,11 +15,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().file_name",
-					"type": "Expression"
-				},
-				"folderPath": "movies/hollywood",
+				"folderPath": "movies/bollywood",
 				"container": "session-storage"
 			},
 			"columnDelimiter": ",",
