@@ -1,6 +1,7 @@
 {
-	"name": "pl_filter_file_name",
+	"name": "pl_filter_file_name_and_count",
 	"properties": {
+		"description": "1. I want only files which were endswith .csv\n2. I want a count of .csv files",
 		"activities": [
 			{
 				"name": "Get Metadata1",
