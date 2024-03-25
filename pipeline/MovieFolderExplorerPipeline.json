@@ -1,8 +1,215 @@
 {
-	"name": "pl_",
+	"name": "MovieFolderExplorerPipeline",
 	"properties": {
-		"folder": {
-			"name": "Assignments"
+		"activities": [
+			{
+				"name": "GetMovieFolderMetadata",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "blob_storage_IterateFoldersAndFilesPipeline",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				},
+				"properties": {
+					"folderPath": "<container_name>/movies",
+					"recursive": true,
+					"storeOutput": {
+						"type": "DataTable",
+						"name": "folderMetadata"
+					}
+				}
+			},
+			{
+				"name": "SetSubfolderNames",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": ""
+				},
+				"properties": {
+					"variableName": "subfolderNames",
+					"value": "@activity('IterateSubfolders').input.name"
+				}
+			},
+			{
+				"name": "SetFilenames",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": ""
+				},
+				"properties": {
+					"variableName": "filenames",
+					"value": "@activity('IterateSubfolders').output.ProcessSubfolderFiles.output.fileMetadata.select(item => item().name).toArray()"
+				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "Filter1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_name",
+					"value": {
+						"value": "@activity('FilterSubfolders').output",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_name_op",
+					"value": {
+						"value": "@variables('folder_name')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "GetMovieFolderMetadata_copy1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "blob_storage_IterateFoldersAndFilesPipeline",
+						"type": "DatasetReference"
+					},
+					"fieldList": [
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "BinaryReadSettings"
+					}
+				},
+				"properties": {
+					"folderPath": "<container_name>/movies",
+					"recursive": true,
+					"storeOutput": {
+						"type": "DataTable",
+						"name": "folderMetadata"
+					}
+				}
+			},
+			{
+				"name": "Filter1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "GetMovieFolderMetadata",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetMovieFolderMetadata').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().type,'Folder')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Filter1_copy1",
+				"type": "Filter",
+				"dependsOn": [
+					{
+						"activity": "GetMovieFolderMetadata_copy1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('GetMovieFolderMetadata').output.childItems",
+						"type": "Expression"
+					},
+					"condition": {
+						"value": "@equals(item().type,'Folder')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"folder_name": {
+				"type": "Array"
+			},
+			"folder_name_op": {
+				"type": "Array"
+			}
 		},
 		"annotations": []
 	}

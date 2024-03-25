@@ -27,6 +27,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -56,6 +57,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -158,7 +160,7 @@
 				"typeProperties": {
 					"variableName": "count",
 					"value": {
-						"value": "@activity('Filter_filenaeme_bollywood').output.FilteredItemsCount",
+						"value": "@length(activity('Filter_filenaeme_bollywood').output.value)",
 						"type": "Expression"
 					}
 				}
@@ -204,9 +206,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "count_csv_files",
+					"variableName": "count_files",
 					"value": {
-						"value": "@variables('count').value",
+						"value": "@{variables('count')[1]}",
 						"type": "Expression"
 					}
 				}
@@ -245,6 +247,15 @@
 			},
 			"count_csv_files": {
 				"type": "Integer"
+			},
+			"count_file": {
+				"type": "Array"
+			},
+			"folder_name": {
+				"type": "Array"
+			},
+			"folder_name_op": {
+				"type": "Array"
 			}
 		},
 		"folder": {
