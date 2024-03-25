@@ -23,6 +23,7 @@
 					"enableLogging": true,
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					}
 				}
@@ -64,7 +65,7 @@
 			}
 		},
 		"folder": {
-			"name": "Assignments"
+			"name": "Assignments/day_2"
 		},
 		"annotations": []
 	}

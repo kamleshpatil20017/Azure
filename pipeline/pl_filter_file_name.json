@@ -19,7 +19,7 @@
 						"referenceName": "blob_storage_Ass_del_act_2",
 						"type": "DatasetReference",
 						"parameters": {
-							"file_name": "adssd"
+							"file_name": "jdf"
 						}
 					},
 					"fieldList": [
@@ -190,11 +190,17 @@
 				}
 			},
 			{
-				"name": "Set variable1",
+				"name": "final_count_of_csv_files",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
 						"activity": "count_of_bollywood_files",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "count_of_hollywood_files",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -206,9 +212,9 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": "count_files",
+					"variableName": "count_file",
 					"value": {
-						"value": "@{variables('count')[1]}",
+						"value": "@add(variables('count'),variables('count_of_file_name'))",
 						"type": "Expression"
 					}
 				}
@@ -249,7 +255,7 @@
 				"type": "Integer"
 			},
 			"count_file": {
-				"type": "Array"
+				"type": "Integer"
 			},
 			"folder_name": {
 				"type": "Array"
@@ -259,7 +265,7 @@
 			}
 		},
 		"folder": {
-			"name": "Assignments"
+			"name": "Assignments/day_3"
 		},
 		"annotations": []
 	}

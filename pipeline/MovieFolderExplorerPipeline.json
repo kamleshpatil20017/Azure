@@ -211,6 +211,9 @@
 				"type": "Array"
 			}
 		},
+		"folder": {
+			"name": "Assignments/day_3"
+		},
 		"annotations": []
 	}
 }
