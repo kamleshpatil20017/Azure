@@ -123,6 +123,9 @@
 		"variables": {
 			"folderMetadata": {
 				"type": "Array"
+			},
+			"op": {
+				"type": "Array"
 			}
 		},
 		"folder": {
