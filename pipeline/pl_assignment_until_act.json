@@ -135,6 +135,12 @@
 			},
 			"rahul_approch": {
 				"type": "String"
+			},
+			"subfolder_name": {
+				"type": "Array"
+			},
+			"folder_names": {
+				"type": "Array"
 			}
 		},
 		"folder": {

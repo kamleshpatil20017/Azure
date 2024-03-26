@@ -40,25 +40,6 @@
 				}
 			},
 			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
-				"policy": {
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "folder_name_op",
-					"value": {
-						"value": "@activity('Get Metadata1').output.childItems",
-						"type": "Expression"
-					}
-				}
-			},
-			{
 				"name": "FilterSubfolders",
 				"type": "Filter",
 				"dependsOn": [
@@ -133,8 +114,54 @@
 									"type": "BinaryReadSettings"
 								}
 							}
+						},
+						{
+							"name": "Append variable1",
+							"type": "AppendVariable",
+							"dependsOn": [
+								{
+									"activity": "Get Metadata1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "subfolder_name",
+								"value": {
+									"value": "@activity('Get Metadata1').output.childItems",
+									"type": "Expression"
+								}
+							}
 						}
 					]
+				}
+			},
+			{
+				"name": "Set variable3",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "FilterSubfolders",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "folder_names",
+					"value": {
+						"value": "@activity('FilterSubfolders').output",
+						"type": "Expression"
+					}
 				}
 			}
 		],
@@ -162,6 +189,12 @@
 			},
 			"rahul_approch": {
 				"type": "String"
+			},
+			"subfolder_name": {
+				"type": "Array"
+			},
+			"folder_names": {
+				"type": "Array"
 			}
 		},
 		"folder": {
