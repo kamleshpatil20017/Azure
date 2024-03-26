@@ -38,6 +38,20 @@
 				"type": "string"
 			}
 		},
+		"variables": {
+			"data_op": {
+				"type": "Array"
+			},
+			"sep_id_column": {
+				"type": "Array"
+			},
+			"final_op_col_id": {
+				"type": "Array"
+			},
+			"rahul_approch": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Assignments/day_2"
 		},
