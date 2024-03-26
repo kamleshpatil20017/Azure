@@ -16,10 +16,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "blob_storage_IterateFoldersAndFilesPipeline",
-						"type": "DatasetReference",
-						"parameters": {
-							"folder_name": "hsd"
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
