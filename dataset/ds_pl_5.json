@@ -5,12 +5,20 @@
 			"referenceName": "AzureBlobStorage1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"folder__name": {
+				"type": "String"
+			}
+		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "movies/hollywood",
+				"folderPath": {
+					"value": "@dataset().folder__name",
+					"type": "Expression"
+				},
 				"container": "session-storage"
 			}
 		}

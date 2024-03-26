@@ -18,10 +18,7 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "blob_storage_Ass_del_act_2",
-						"type": "DatasetReference",
-						"parameters": {
-							"file_name": "jdf"
-						}
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
@@ -51,7 +48,10 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "ds_pl_5",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folder__name": "movies/hollywood"
+						}
 					},
 					"fieldList": [
 						"childItems"
