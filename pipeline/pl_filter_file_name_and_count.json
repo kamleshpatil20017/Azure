@@ -161,7 +161,7 @@
 				"typeProperties": {
 					"variableName": "count",
 					"value": {
-						"value": "@length(activity('Filter_filenaeme_bollywood').output.value)",
+						"value": "@activity('Filter_filenaeme_bollywood').output.FilteredItemsCount",
 						"type": "Expression"
 					}
 				}
@@ -262,6 +262,9 @@
 				"type": "Array"
 			},
 			"folder_name_op": {
+				"type": "Array"
+			},
+			"op": {
 				"type": "Array"
 			}
 		},

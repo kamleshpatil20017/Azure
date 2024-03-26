@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "marahi.csv",
+				"fileName": "marathi.csv",
 				"folderPath": "movies/bollywood",
 				"container": "session-storage"
 			},
