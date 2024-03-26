@@ -23,6 +23,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -50,7 +51,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": ""
+					"variableName": "",
+					"value": ""
 				},
 				"properties": {
 					"variableName": "subfolderNames",
@@ -69,7 +71,8 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"variableName": ""
+					"variableName": "",
+					"value": ""
 				},
 				"properties": {
 					"variableName": "filenames",
@@ -81,7 +84,7 @@
 				"type": "AppendVariable",
 				"dependsOn": [
 					{
-						"activity": "Filter1",
+						"activity": "FilterSubfolders",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -123,6 +126,8 @@
 			{
 				"name": "GetMovieFolderMetadata_copy1",
 				"type": "GetMetadata",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"retry": 0,
@@ -141,6 +146,7 @@
 					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
+						"recursive": true,
 						"enablePartitionDiscovery": false
 					},
 					"formatSettings": {
@@ -157,7 +163,7 @@
 				}
 			},
 			{
-				"name": "Filter1",
+				"name": "FilterSubfolders",
 				"type": "Filter",
 				"dependsOn": [
 					{
@@ -182,6 +188,8 @@
 			{
 				"name": "Filter1_copy1",
 				"type": "Filter",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "GetMovieFolderMetadata_copy1",
@@ -208,6 +216,9 @@
 				"type": "Array"
 			},
 			"folder_name_op": {
+				"type": "Array"
+			},
+			"op": {
 				"type": "Array"
 			}
 		},
