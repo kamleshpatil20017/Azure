@@ -1,0 +1,19 @@
+{
+	"name": "db_delete",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Binary",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "english.csv",
+				"folderPath": "movies/bollywood",
+				"container": "session-storage"
+			}
+		}
+	}
+}
