@@ -1,0 +1,17 @@
+{
+	"name": "RestService1",
+	"properties": {
+		"parameters": {
+			"relative_url": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "http://ergast.com/api/f1/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
