@@ -53,7 +53,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory_path": {
-								"value": "@concat('bronze/session_',string(utcNow('yyyyMMdd')))",
+								"value": "@concat('bronze/session/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
 							}
 						}
@@ -86,7 +86,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": {
-								"value": "@concat('bronze/session',string(utcNow('yyyyMMdd')))",
+								"value": "@concat('bronze/session/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
 							},
 							"wildcardFileName": "*.json",
@@ -122,7 +122,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('aact_lookup_read_file_content').output.value[0].MRData.SeasonTable.Seasons",
+						"value": "@activity('aact_lookup_read_file_content').output.firstRow.MRData.SeasonTable.Seasons",
 						"type": "Expression"
 					},
 					"isSequential": false,
@@ -180,7 +180,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"directory_path": {
-											"value": "@concat('bronze/race_',string(utcNow('yyyyMMdd')))",
+											"value": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
 											"type": "Expression"
 										}
 									}
@@ -193,8 +193,6 @@
 			{
 				"name": "act_lookup_read_race_data",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
@@ -233,7 +231,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory_path": {
-								"value": "@activity('Copy data1').output.MRData.RaceTable",
+								"value": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
 							}
 						}
@@ -256,12 +254,46 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
-					"batchCount": 3
+					"items": {
+						"value": "@activity('Copy data1').output.value",
+						"type": "Expression"
+					},
+					"batchCount": 3,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_ingest_race_result",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"racr_lst": {
+										"value": "@item().MRData.RaceTable.Races",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
 				}
 			}
 		],
 		"variables": {
 			"session_values": {
+				"type": "String"
+			},
+			"season_id": {
+				"type": "String"
+			},
+			"round_id": {
 				"type": "String"
 			}
 		},

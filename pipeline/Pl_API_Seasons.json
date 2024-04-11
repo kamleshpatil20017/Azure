@@ -337,6 +337,15 @@
 			},
 			"schedule_season": {
 				"type": "String"
+			},
+			"session_values": {
+				"type": "String"
+			},
+			"season_id": {
+				"type": "String"
+			},
+			"round_id": {
+				"type": "String"
 			}
 		},
 		"folder": {
