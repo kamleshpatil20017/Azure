@@ -22,9 +22,16 @@
 			},
 			{
 				"name": "act_copy_data_api_to_adls",
-				"description": "This activity copyind",
+				"description": "This activity copy data to HTTP to adls",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "act_web_get_session_data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -67,9 +74,82 @@
 				"outputs": [
 					{
 						"referenceName": "asdls_json",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"directory_path": {
+								"value": "@concat('bronze/session',string(utcNow('yyyyMMdd')))",
+								"type": "Expression"
+							}
+						}
 					}
 				]
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
+				"dependsOn": [
+					{
+						"activity": "act_web_get_session_data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			},
+			{
+				"name": "aact_lookup_read_file_content",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "act_copy_data_api_to_adls",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"wildcardFolderPath": {
+								"value": "@concat('bronze/session',string(utcNow('yyyyMMdd')))",
+								"type": "Expression"
+							},
+							"wildcardFileName": "*.json",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "asdls_json",
+						"type": "DatasetReference",
+						"parameters": {
+							"directory_path": {
+								"value": "@concat('bronze/session',string(utcNow()))",
+								"type": "Expression"
+							}
+						}
+					}
+				}
 			}
 		],
 		"folder": {
