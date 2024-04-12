@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "act_foreach_race_data",
+				"description": "This activity will iterate on season and round",
 				"type": "ForEach",
 				"dependsOn": [],
 				"userProperties": [],
