@@ -125,6 +125,7 @@
 						"value": "@activity('act_lookup_season_data').output.value[0].MRData.SeasonTable.Seasons",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"batchCount": 3,
 					"activities": [
 						{
@@ -254,10 +255,10 @@
 									"referenceName": "pl_ingest_race_result",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true,
+								"waitOnCompletion": false,
 								"parameters": {
 									"race_lst": {
-										"value": "@activity('act_loockup_read_race_data').output.value[0].MRData.RaceTable.Races",
+										"value": "@item().MRData.RaceTable.Races",
 										"type": "Expression"
 									}
 								}
