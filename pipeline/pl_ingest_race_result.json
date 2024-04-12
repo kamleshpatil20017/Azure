@@ -102,7 +102,7 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"relative_url": {
-											"value": "@concat(variables('season_id'),'/',variables('round_id'),'/result.json?limit=100')",
+											"value": "@concat(variables('season_id'), '/' ,variables('round_id') , '/results.json?limit=100')",
 											"type": "Expression"
 										}
 									}

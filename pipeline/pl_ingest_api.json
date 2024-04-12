@@ -241,8 +241,6 @@
 			{
 				"name": "ForEach2",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "act_lookup_read_race_data",
@@ -289,6 +287,8 @@
 				"name": "act_foreach_race_data_1",
 				"description": "This activity will iterate on season and round",
 				"type": "ForEach",
+				"state": "Inactive",
+				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "act_lookup_read_race_data",
