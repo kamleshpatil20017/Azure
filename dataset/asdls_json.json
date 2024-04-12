@@ -10,8 +10,7 @@
 				"type": "String"
 			},
 			"file_name": {
-				"type": "String",
-				"defaultValue": "Season"
+				"type": "String"
 			}
 		},
 		"annotations": [],

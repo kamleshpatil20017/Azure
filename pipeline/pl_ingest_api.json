@@ -56,7 +56,7 @@
 								"value": "@concat('bronze/season/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
 							},
-							"file_name": "season.json"
+							"file_name": "season"
 						}
 					}
 				]
