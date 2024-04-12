@@ -8,6 +8,10 @@
 		"parameters": {
 			"directory_path": {
 				"type": "String"
+			},
+			"file_name": {
+				"type": "String",
+				"defaultValue": "Season"
 			}
 		},
 		"annotations": [],
@@ -15,6 +19,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().file_name",
+					"type": "Expression"
+				},
 				"folderPath": {
 					"value": "@dataset().directory_path",
 					"type": "Expression"

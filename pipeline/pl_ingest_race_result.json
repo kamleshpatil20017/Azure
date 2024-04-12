@@ -116,7 +116,8 @@
 										"directory_path": {
 											"value": "@concat('bronze/results/',string(utcNow('yyyyMMdd')))",
 											"type": "Expression"
-										}
+										},
+										"file_name": "Season"
 									}
 								}
 							]
@@ -128,6 +129,9 @@
 		"parameters": {
 			"racr_lst": {
 				"type": "array"
+			},
+			"season_year": {
+				"type": "string"
 			}
 		},
 		"variables": {
