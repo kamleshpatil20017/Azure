@@ -42,7 +42,7 @@
 							"typeProperties": {
 								"variableName": "round_id",
 								"value": {
-									"value": "@item().Races",
+									"value": "@item().round_id",
 									"type": "Expression"
 								}
 							}
