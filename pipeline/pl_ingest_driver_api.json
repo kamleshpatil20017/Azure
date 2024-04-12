@@ -49,7 +49,8 @@
 							"directory_path": {
 								"value": "@concat('bronze/driver/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
-							}
+							},
+							"file_name": "Season"
 						}
 					}
 				]
