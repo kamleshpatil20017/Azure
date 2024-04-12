@@ -125,8 +125,7 @@
 						"value": "@activity('aact_lookup_read_file_content').output.firstRow.MRData.SeasonTable.Seasons",
 						"type": "Expression"
 					},
-					"isSequential": false,
-					"batchCount": 3,
+					"isSequential": true,
 					"activities": [
 						{
 							"name": "Copy data1",
@@ -216,7 +215,7 @@
 							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"wildcardFolderPath": {
-								"value": "@activity('Copy data1').output.MRData.RaceTable",
+								"value": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
 								"type": "Expression"
 							},
 							"wildcardFileName": "*.json",
@@ -231,19 +230,17 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory_path": {
-								"value": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
+								"value": "@concat('')",
 								"type": "Expression"
 							}
 						}
 					},
-					"firstRowOnly": true
+					"firstRowOnly": false
 				}
 			},
 			{
 				"name": "ForEach2",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "act_lookup_read_race_data",
@@ -255,9 +252,10 @@
 				"userProperties": [],
 				"typeProperties": {
 					"items": {
-						"value": "@activity('Copy data1').output.value",
+						"value": "@activity('act_lookup_read_race_data').output.value",
 						"type": "Expression"
 					},
+					"isSequential": false,
 					"batchCount": 3,
 					"activities": [
 						{
