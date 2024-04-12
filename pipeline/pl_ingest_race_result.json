@@ -51,7 +51,8 @@
 							}
 						},
 						{
-							"name": "Copy data1",
+							"name": "act_copy_result_data_api_to_adls",
+							"description": "This activity is use for copy result data from API to ADLS",
 							"type": "Copy",
 							"dependsOn": [
 								{
