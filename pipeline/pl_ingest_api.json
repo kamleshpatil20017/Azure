@@ -234,18 +234,33 @@
 								},
 								"firstRowOnly": false
 							}
-						},
+						}
+					]
+				}
+			},
+			{
+				"name": "act_foreach_iterate_on_race_result_value",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "act_foreach_iterate_on_season_year",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('act_loockup_read_race_data').output.value",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
 						{
 							"name": "Execute Pipeline1",
 							"type": "ExecutePipeline",
-							"dependsOn": [
-								{
-									"activity": "act_loockup_read_race_data",
-									"dependencyConditions": [
-										"Succeeded"
-									]
-								}
-							],
+							"dependsOn": [],
 							"policy": {
 								"secureInput": false
 							},
