@@ -230,6 +230,36 @@
 										},
 										"file_name": "@concat(item().season,'_races')"
 									}
+								},
+								"firstRowOnly": false
+							}
+						},
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [
+								{
+									"activity": "act_loockup_read_race_data",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pl_ingest_race_result",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true,
+								"parameters": {
+									"race_lst": {
+										"value": "@activity('act_loockup_read_race_data').output.value[0].MRData.RaceTable.Races",
+										"type": "Expression"
+									}
 								}
 							}
 						}
