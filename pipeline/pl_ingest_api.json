@@ -183,7 +183,7 @@
 									"parameters": {
 										"directory_path": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
 										"file_name": {
-											"value": "races",
+											"value": "@concat(item().season,'_races')",
 											"type": "Expression"
 										}
 									}
@@ -210,7 +210,13 @@
 									"referenceName": "pl_child_results",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"season_year": {
+										"value": "@item().season",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
@@ -225,9 +231,6 @@
 				"type": "String"
 			},
 			"round_id": {
-				"type": "String"
-			},
-			"Season_id": {
 				"type": "String"
 			}
 		},
