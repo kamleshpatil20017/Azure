@@ -74,7 +74,10 @@
 									"type": "DatasetReference",
 									"parameters": {
 										"directory_path": "@concat('bronze/result/',string(utcNow('yyyyMMdd')))",
-										"file_name": "race_result"
+										"file_name": {
+											"value": "@concat(pipeline().parameters.season_year,'_round_',item().round)",
+											"type": "Expression"
+										}
 									}
 								}
 							]
@@ -111,7 +114,10 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"directory_path": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
-							"file_name": "@concat(item().season,'_races')"
+							"file_name": {
+								"value": "@concat(pipeline().parameters.season_year,'_races')",
+								"type": "Expression"
+							}
 						}
 					},
 					"firstRowOnly": false
