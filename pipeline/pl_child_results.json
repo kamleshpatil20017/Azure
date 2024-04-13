@@ -1,10 +1,65 @@
 {
-	"name": "pipeline_child",
+	"name": "pl_child_results",
 	"properties": {
 		"activities": [
 			{
-				"name": "Lookup1",
-				"description": "fetch a data from file",
+				"name": "act_for_each_season_round",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "act_look_up_races",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('act_look_up_races').output.value[0].MRData.RaceTable.Races",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "act_cpy_round_result",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RestSource",
+									"httpRequestTimeout": "00:01:40",
+									"requestInterval": "00.00:00:00.010",
+									"requestMethod": "GET",
+									"paginationRules": {
+										"supportRFC5988": "true"
+									}
+								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings"
+									}
+								},
+								"enableStaging": false
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "act_look_up_races",
 				"type": "Lookup",
 				"dependsOn": [],
 				"policy": {
@@ -17,57 +72,32 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
+						"type": "JsonSource",
 						"storeSettings": {
-							"type": "AzureBlobStorageReadSettings",
+							"type": "AzureBlobFSReadSettings",
 							"recursive": true,
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
+							"type": "JsonReadSettings"
 						}
 					},
 					"dataset": {
-						"referenceName": "blob_storage_ass_del_act_1",
-						"type": "DatasetReference"
+						"referenceName": "asdls_json",
+						"type": "DatasetReference",
+						"parameters": {
+							"directory_path": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
+							"file_name": "@concat(item().season,'_races')"
+						}
 					},
 					"firstRowOnly": false
 				}
 			}
 		],
-		"variables": {
-			"file_name_with_extension": {
-				"type": "Array"
-			},
-			"file_name_concat": {
-				"type": "String"
-			},
-			"combine_file_names": {
-				"type": "Array"
-			},
-			"collect_file_name_1": {
-				"type": "Array"
-			},
-			"collect_file_name_2": {
-				"type": "Array"
-			},
-			"combine_result": {
-				"type": "Array"
-			},
-			"combine_op": {
-				"type": "String"
-			},
-			"count_of_file_name": {
-				"type": "Integer"
-			},
-			"count": {
-				"type": "Integer"
-			},
-			"count_files": {
-				"type": "String"
-			},
-			"count_csv_files": {
-				"type": "Integer"
+		"parameters": {
+			"season_year": {
+				"type": "string",
+				"defaultValue": "1950"
 			}
 		},
 		"annotations": []
