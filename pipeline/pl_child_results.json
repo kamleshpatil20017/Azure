@@ -61,7 +61,10 @@
 									"referenceName": "ds_http_api",
 									"type": "DatasetReference",
 									"parameters": {
-										"relative_url": "results.json?limit=100"
+										"relative_url": {
+											"value": "@concat(pipeline().parameters.season_year,'/',item().round,'/results.json?limit=1000')",
+											"type": "Expression"
+										}
 									}
 								}
 							],
@@ -119,6 +122,11 @@
 			"season_year": {
 				"type": "string",
 				"defaultValue": "1950"
+			}
+		},
+		"variables": {
+			"Season_id": {
+				"type": "String"
 			}
 		},
 		"annotations": []

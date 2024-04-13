@@ -183,7 +183,7 @@
 									"parameters": {
 										"directory_path": "@concat('bronze/race/',string(utcNow('yyyyMMdd')))",
 										"file_name": {
-											"value": "@concat(item().season,'_races')",
+											"value": "races",
 											"type": "Expression"
 										}
 									}
@@ -225,6 +225,9 @@
 				"type": "String"
 			},
 			"round_id": {
+				"type": "String"
+			},
+			"Season_id": {
 				"type": "String"
 			}
 		},
