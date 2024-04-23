@@ -120,7 +120,7 @@
 											"value": "@concat('bronze/results/',string(utcNow('yyyyMMdd')))",
 											"type": "Expression"
 										},
-										"file_name": "Season"
+										"file_name": "race_result"
 									}
 								}
 							]
