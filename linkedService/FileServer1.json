@@ -6,8 +6,8 @@
 		"type": "FileServer",
 		"typeProperties": {
 			"host": "C:\\Users\\kamlesh patil\\OneDrive\\Desktop",
-			"userId": "kamleshpatil_142001@outlook.com",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiIwMjhlYjAxZi01NzdkLTQ3YTAtOGY3Yi1mMTcxMzVkZGFmNGQiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"userId": "manojmore20240421@gmail.com",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhNzU2MTk3Yi1hZGI0LTQ0NWItOTJkZS1mZDBiZWU2ODIyZTMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "integrationRuntime2",
