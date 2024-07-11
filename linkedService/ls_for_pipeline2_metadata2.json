@@ -1,0 +1,12 @@
+{
+	"name": "ls_for_pipeline2_metadata2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://kamleshstorageaccount.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEU4NTQyRjI0LTBGOTUtNEJDOS1CM0M0LUE4NEU1NDg4N0Q0OF9mNTg2MjM4YS1kODFkLTRjZTYtYTg4Yy0zMmQ4ZDMxMWMyMTgiDQp9"
+		}
+	}
+}
