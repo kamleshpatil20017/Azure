@@ -2,7 +2,7 @@
 	"name": "ds_source_data",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_adls_formuls_one",
+			"referenceName": "AzureDataLakeStorage3",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "file_name_temp.txt",
-				"fileSystem": "test"
+				"fileName": "emp1.csv",
+				"fileSystem": "snowpipe-source-blob"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",

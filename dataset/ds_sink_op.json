@@ -2,15 +2,15 @@
 	"name": "ds_sink_op",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "AzureDataLakeStorage4",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "output"
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "unity-catlog"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "",
