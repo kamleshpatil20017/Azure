@@ -34,10 +34,8 @@
 				"source1 rank(asc(Point, true),",
 				"     output(Field as long)) ~> rank1",
 				"rank1 select(mapColumn(",
-				"          Fname,",
-				"          Lname,",
-				"          Field,",
-				"          Point",
+				"          each(match(ERROR_FUNCTION('')),",
+				"               ERROR_FUNCTION('') = $$)",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1"
