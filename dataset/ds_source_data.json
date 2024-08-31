@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "emp1.csv",
+				"fileName": "emp.csv",
 				"fileSystem": "snowpipe-source-blob"
 			},
 			"columnDelimiter": ",",
