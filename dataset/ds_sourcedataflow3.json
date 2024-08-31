@@ -1,8 +1,8 @@
 {
-	"name": "ds_source_data",
+	"name": "ds_sourcedataflow3",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureDataLakeStorage3",
+			"referenceName": "ls_dataflow3",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
@@ -10,16 +10,29 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "emp1.csv",
-				"fileSystem": "snowpipe-source-blob"
+				"fileName": "csv file.txt",
+				"fileSystem": "rushikesh"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
-			"firstRowAsHeader": false,
+			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": [
 			{
+				"name": "Fname",
+				"type": "String"
+			},
+			{
+				"name": "Lname",
+				"type": "String"
+			},
+			{
+				"name": "Field",
+				"type": "String"
+			},
+			{
+				"name": "Point",
 				"type": "String"
 			}
 		]
