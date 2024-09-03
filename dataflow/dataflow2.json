@@ -15,6 +15,9 @@
 			"transformations": [
 				{
 					"name": "alterRow1"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -22,7 +25,9 @@
 				"     validateSchema: false) ~> source1",
 				"source(allowSchemaDrift: true,",
 				"     validateSchema: false) ~> source2",
-				"source1 alterRow() ~> alterRow1"
+				"source1 alterRow() ~> alterRow1",
+				"alterRow1 select(skipDuplicateMapInputs: false,",
+				"     skipDuplicateMapOutputs: false) ~> select1"
 			]
 		}
 	}
