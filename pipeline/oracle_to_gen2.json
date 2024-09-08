@@ -13,7 +13,16 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
+				"userProperties": [
+					{
+						"name": "Source",
+						"value": "HR.EMPLOYEES"
+					},
+					{
+						"name": "Destination",
+						"value": "rushikesh//"
+					}
+				],
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
