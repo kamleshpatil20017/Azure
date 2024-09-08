@@ -114,13 +114,43 @@
 				"userProperties": [],
 				"typeProperties": {
 					"variableName": "file_size",
-					"value": ""
+					"value": {
+						"value": "@activity('Get Metadata2').output.size",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Append variable1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "file_size_set",
+					"value": {
+						"value": "@variables('file_size')",
+						"type": "Expression"
+					}
 				}
 			}
 		],
 		"variables": {
 			"file_size": {
 				"type": "Array"
+			},
+			"file_size_set": {
+				"type": "String"
 			}
 		},
 		"annotations": []
