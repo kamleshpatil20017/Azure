@@ -32,7 +32,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Excel1",
+						"referenceName": "DelimitedText2",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
@@ -41,6 +41,9 @@
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
 						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
 					}
 				}
 			}
