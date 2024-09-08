@@ -10,10 +10,6 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": {
-					"value": "*.csv",
-					"type": "Expression"
-				},
 				"fileSystem": {
 					"value": "input",
 					"type": "Expression"
