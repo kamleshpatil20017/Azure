@@ -33,7 +33,10 @@
 				"typeProperties": {
 					"dataset": {
 						"referenceName": "DelimitedText2",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"file_name": "@item().name"
+						}
 					},
 					"fieldList": [
 						"childItems"
@@ -50,8 +53,6 @@
 			{
 				"name": "ForEach1",
 				"type": "ForEach",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "Get Metadata1",
@@ -82,7 +83,10 @@
 							"typeProperties": {
 								"dataset": {
 									"referenceName": "DelimitedText2",
-									"type": "DatasetReference"
+									"type": "DatasetReference",
+									"parameters": {
+										"file_name": "@item().name"
+									}
 								},
 								"fieldList": [],
 								"storeSettings": {
