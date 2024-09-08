@@ -10,11 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "*.csv",
+				"fileName": "*xlxs",
 				"fileSystem": "input"
-			},
-			"compression": {
-				"type": "gzip"
 			}
 		},
 		"schema": []
