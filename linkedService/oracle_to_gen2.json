@@ -5,8 +5,8 @@
 		"annotations": [],
 		"type": "Oracle",
 		"typeProperties": {
-			"connectionString": "host=localhost;port=1521;servicename=XE;user id=sys",
-			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiI2NWFkNTM2Ny1mMGIyLTQ1MDMtOTE1Mi0yZDhhZjM3ZTQ0MmMiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+			"connectionString": "host=localhost;port=1521;servicename=XE;user id=SYSTEM_KP",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJhMjZlMzcyMy1jMTQ2LTRiNDctYTMxOC1iYmMwYWFjMWZiNzAiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
 		},
 		"connectVia": {
 			"referenceName": "fororacle",
