@@ -103,8 +103,6 @@
 			{
 				"name": "Append variable1",
 				"type": "AppendVariable",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [
 					{
 						"activity": "ForEach1",
