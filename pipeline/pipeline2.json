@@ -99,8 +99,30 @@
 						}
 					]
 				}
+			},
+			{
+				"name": "Append variable1",
+				"type": "AppendVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "file_size",
+					"value": ""
+				}
 			}
 		],
+		"variables": {
+			"file_size": {
+				"type": "Array"
+			}
+		},
 		"annotations": []
 	}
 }
