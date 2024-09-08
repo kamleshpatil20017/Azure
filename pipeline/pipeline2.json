@@ -32,11 +32,8 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "DelimitedText2",
-						"type": "DatasetReference",
-						"parameters": {
-							"file_name": "@item().name"
-						}
+						"referenceName": "DelimitedText3",
+						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"childItems"
