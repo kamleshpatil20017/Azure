@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "*xlxs",
+				"fileName": "*.xlsx",
+				"folderPath": "SAMPLE",
 				"fileSystem": "input"
 			}
 		},
