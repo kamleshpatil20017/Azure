@@ -26,7 +26,6 @@
 				"typeProperties": {
 					"source": {
 						"type": "OracleSource",
-						"oracleReaderQuery": "select * from hr.employees",
 						"partitionOption": "None",
 						"queryTimeout": "02:00:00"
 					},
