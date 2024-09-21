@@ -1,0 +1,9 @@
+{
+	"name": "kamlesh-data-factory",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "486cda92-c46b-4b49-a469-4d24fb0198c2",
+		"tenantId": "f9d26db0-aaf4-487a-b429-0ea99984578e"
+	}
+}
