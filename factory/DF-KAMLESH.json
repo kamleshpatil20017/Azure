@@ -1,0 +1,9 @@
+{
+	"name": "DF-KAMLESH",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e599984b-3f42-406f-b9e4-f365ce1df30d",
+		"tenantId": "74ce676a-aa6e-41c1-bc31-f80e23d060ce"
+	}
+}
